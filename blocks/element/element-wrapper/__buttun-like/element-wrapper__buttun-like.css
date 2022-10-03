@@ -1,0 +1,23 @@
+.element-wrapper__buttun-like{
+    background-image: url(../../../../images/Vector.svg);
+    width: 22px;
+    height: 19px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    grid-column: 2;
+    justify-self: self-end;
+}
+
+.element-wrapper__buttun-like:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
+
+.element-wrapper__buttun-like:active{
+    background-image: url(../../../../images/blackLike.svg);
+    opacity: 1;
+    transition: 0.0s;
+}

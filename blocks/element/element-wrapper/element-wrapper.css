@@ -1,0 +1,6 @@
+.element-wrapper{
+    display: grid;
+    min-width: 246px;
+    max-height: 23px;
+    align-items: center;
+}
