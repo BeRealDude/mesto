@@ -7,6 +7,9 @@
     color: #FFFFFF;
     margin: 0;
     grid-row: 2/2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media (max-width: 900px) {

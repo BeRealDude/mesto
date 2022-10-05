@@ -17,69 +17,69 @@
             <div class="profile-info">
                 <h1 class="profile-info__name"></h1>
                 <p class="profile-info__activity"></p>
-                <button class="profile-info__edit-button profile-info__open-popup"></button>
+                <button type="button" class="profile-info__edit-button profile-info__open-popup"></button>
             </div>
-            <button class="profile__add-button"></button>
+            <button type="button" class="profile__add-button"></button>
         </div>
-        <section class="elements">
-            <article class="element">
-                <img class="element__maskGroup" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Старинное здание">
-                <div class="element-wrapper">
-                    <h2 class="element-wrapper__title">Карачаевск</h2>
-                    <button class="element-wrapper__buttun-like"></button>
+        <section class="cards">
+        <ul class="elements">
+            <li class="elements__item">
+                <img class="elements__maskGroup" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Старинное здание">
+                <div class="elements__wrapper">
+                    <h2 class="elements__title">Карачаевск</h2>
+                    <button type="button" class="elements__buttun-like"></button>
                 </div>
-            </article>
-            <article class="element">
-                <img class="element__maskGroup" src="images/kirill-pershin-1404681-unsplash.jpg" alt="эльбрус в далеке">
-                <div class="element-wrapper">
-                    <h2 class="element-wrapper__title">Гора Эльбрус</h2>
-                    <button class="element-wrapper__buttun-like"></button>
+            </li>
+            <li class="elements__item">
+                <img class="elements__maskGroup" src="images/kirill-pershin-1404681-unsplash.jpg" alt="эльбрус в далеке">
+                <div class="elements__wrapper">
+                    <h2 class="elements__title">Гора Эльбрус</h2>
+                    <button type="button" class="elements__buttun-like"></button>
                 </div>
-            </article>
-            <article class="element">
-                <img class="element__maskGroup" src="images/kirill-pershin-1556355-unsplash.jpg" alt="горы">
-                <div class="element-wrapper">
-                    <h2 class="element-wrapper__title">Домбай</h2>
-                    <button class="element-wrapper__buttun-like"></button>
+            </li>
+            <li class="elements__item">
+                <img class="elements__maskGroup" src="images/kirill-pershin-1556355-unsplash.jpg" alt="горы">
+                <div class="elements__wrapper">
+                    <h2 class="elements__title">Домбай</h2>
+                    <button type="button" class="elements__buttun-like"></button>
                 </div>
-            </article>
-            <article class="element">
-                <img class="element__maskGroup" src="images/kirill-pershin-1404681-unsplash.jpg" alt="эльбрус в далеке">
-                <div class="element-wrapper">
-                    <h2 class="element-wrapper__title">Гора Эльбрус</h2>
-                    <button class="element-wrapper__buttun-like"></button>
+            </li>
+            <li class="elements__item">
+                <img class="elements__maskGroup" src="images/kirill-pershin-1404681-unsplash.jpg" alt="эльбрус в далеке">
+                <div class="elements__wrapper">
+                    <h2 class="elements__title">Гора Эльбрус</h2>
+                    <button type="button" class="elements__buttun-like"></button>
                 </div>
-            </article>
-            <article class="element">
-                <img class="element__maskGroup" src="images/kirill-pershin-1556355-unsplash.jpg" alt="горы">
-                <div class="element-wrapper">
-                    <h2 class="element-wrapper__title">Домбай</h2>
-                    <button class="element-wrapper__buttun-like"></button>
+            </li>
+            <li class="elements__item">
+                <img class="elements__maskGroup" src="images/kirill-pershin-1556355-unsplash.jpg" alt="горы">
+                <div class="elements__wrapper">
+                    <h2 class="elements__title">Домбай</h2>
+                    <button type="button" class="elements__buttun-like"></button>
                 </div>
-            </article>
-            <article class="element">
-                <img class="element__maskGroup" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Старинное здание">
-                <div class="element-wrapper">
-                    <h2 class="element-wrapper__title">Карачаево-Черкессия</h2>
-                    <button class="element-wrapper__buttun-like"></button>
+            </li>
+            <li class="elements__item">
+                <img class="elements__maskGroup" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Старинное здание">
+                <div class="elements__wrapper">
+                    <h2 class="elements__title">Карачаево-Черкессия</h2>
+                    <button type="button" class="elements__buttun-like"></button>
                 </div>
-            </article>
-        </section>
+            </li>
+        </ul>
+    </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
     <section class="popup">
         <div class="popup__container">
-            <button class="popup__clouse"></button>
-            <div class="popup__content form">
+            <button type="button" class="popup__clouse"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <div class="popup__input">
-                <input class="popup__text popup__text_type_name" type="text" value="Жак-Ив Кусто" placeholder="Введите имя">
-                <input class="popup__text popup__text_type_activity" type="text" value="Исследователь океана" placeholder="Чем вы занимаетесь">
-                <button type="submit" class="form__submit-btn form__submit-btn_action_save">Сохранить</button>
-            </div>
-        </div>
+            <form class="form">
+                <input class="popup__text popup__text_type_name" type="text" name="name" id="name" placeholder="Введите имя">
+                <input class="popup__text popup__text_type_activity" type="text" name="activity" id="activity" placeholder="Чем вы занимаетесь">
+                <button type="submit" class="form__submit-btn">Сохранить</button>
+            </form>
         </div>
     </section>
     <script src="scripts/index.js"></script>

@@ -1,0 +1,10 @@
+.elements__maskGroup{
+    max-width: 282px;
+    border-radius: 10px 10px 0 0;
+    cursor: pointer;
+}
+
+.elements__maskGroup:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
