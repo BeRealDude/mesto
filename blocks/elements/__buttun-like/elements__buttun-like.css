@@ -1,5 +1,5 @@
 .elements__buttun-like{
-    background-image: url(../../../../images/Vector.svg);
+    background-image: url(../../../images/Vector.svg);
     width: 22px;
     height: 19px;
     border: none;
@@ -18,7 +18,7 @@
 }
 
 .elements__buttun-like:active{
-    background-image: url(../../../../images/blackLike.svg);
+    background-image: url(../../../images/blackLike.svg);
     opacity: 1;
     transition: 0.0s;
 }
