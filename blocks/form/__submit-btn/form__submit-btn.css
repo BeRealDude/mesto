@@ -20,7 +20,7 @@
     opacity: 0.8;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 915px) {
     .form__submit-btn{
         min-width: 238px;
         min-height: 46px;

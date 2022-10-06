@@ -11,7 +11,7 @@
     overflow: hidden;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 915px) {
     .profile-info__name{
         font-size: 27px;
         line-height: 33px;

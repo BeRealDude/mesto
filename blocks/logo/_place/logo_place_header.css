@@ -2,7 +2,7 @@
     background-image: url(../../../images/Vectorlogo.header.svg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 915px) {
     .logo_place_header{
         background-image: url(../../../images/Vectorlogo320.svg);
     }

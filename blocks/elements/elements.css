@@ -5,9 +5,10 @@
     row-gap: 20px;
     justify-content: center;
     margin-top: 4%;
+    padding: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 915px) {
     .elements{
         grid-template-columns: auto;
         margin-top: 11.4%;

@@ -16,7 +16,7 @@
     opacity: 0.6;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 915px) {
     .popup__clouse{
         background-image: url(../../../images/CloseIconclouseIcon320.svg);
         width: 20px;

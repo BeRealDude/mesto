@@ -15,7 +15,7 @@ margin-left: auto;
     opacity: 0.6;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 915px) {
     .profile__add-button{
         background-image: url('../../../images/Add ButtonaddButton320.svg');
         margin: 13% 0 0;
