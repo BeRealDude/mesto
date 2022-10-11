@@ -17,8 +17,8 @@
     opacity: 0.6;
 }
 
-.elements__buttun-like:active{
+/*.elements__buttun-like:active{
     background-image: url(../../../images/blackLike.svg);
     opacity: 1;
     transition: 0.0s;
-}
+}*/

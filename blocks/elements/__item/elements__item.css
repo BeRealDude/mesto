@@ -5,4 +5,5 @@
     display: grid;
     border-radius: 10px;
     justify-items: center;
+    position: relative;
 }
