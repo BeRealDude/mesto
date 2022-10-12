@@ -80,38 +80,47 @@ openPopupAdd.addEventListener("click", addPopupOpen);
 //Добавление новых карточек
 
 const formAdd = document.querySelector("#formAdd");
- 
+
 const ulElements = document.querySelector(".elements");
 const template = document.querySelector(".template");
 
 const titleInput = document.querySelector("#title");
 const placeInput = document.querySelector("#place");
 
-
-
 const render = () => {
   initialCards.forEach((card) => {
     const currentItem = createCardNode(card.name, card.link);
-    const like = currentItem.querySelector(".elements__buttun-like")
-  like.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('buttun-like_active');
-  }); 
+    const like = currentItem.querySelector(".elements__buttun-like");
+    like.addEventListener("click", function (evt) {
+      evt.target.classList.toggle("buttun-like_active");
+    });
     ulElements.append(currentItem);
   });
-  
-   
+
   formAdd.addEventListener("submit", formAddSubmitHandler);
 };
 
 const createCardNode = (name, link) => {
-  
   const currentItem = template.content.cloneNode(true);
   const elementsImg = currentItem.querySelector(".elements__maskGroup");
   const elementsTitle = currentItem.querySelector(".elements__title");
   elementsImg.src = link;
   elementsImg.alt = name;
   elementsTitle.textContent = name;
-  
+
+  const deleteBtn = currentItem.querySelector(".elements__buttun-delete");
+  deleteBtn.addEventListener("click", cardNodeDelete);
+
+  const openPopupImg = currentItem.querySelector(".elements__popup-img");
+  openPopupImg.addEventListener("click", togglePopupImg);
+
+  function togglePopupImg() {
+    popupImg.classList.toggle("popup-imgOpen");
+    image.src = link;
+    image.alt = name;
+    altImg.textContent = name;
+  }
+
   return currentItem;
 };
 
@@ -123,11 +132,33 @@ const formAddSubmitHandler = (evt) => {
   titleInput.value = "";
   placeInput.value = "";
 
-  const like = document.querySelector(".elements__buttun-like")
-  like.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('buttun-like_active');
-  }); 
+  const like = document.querySelector(".elements__buttun-like");
+  like.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("buttun-like_active");
+  });
 };
+
+const cardNodeDelete = (e) => {
+  const currentEl = e.target.closest(".elements__item");
+  currentEl.remove();
+};
+
+function togglePopupImg(e) {
+  popupImg.classList.toggle("popup-imgOpen");
+  const currentEl = e.target.closest(".elements__item");
+  image.src = currentEl.querySelector(".elements__maskGroup");
+  image.alt = currentEl.querySelector(".elements__title");
+  altImg.textContent = e.target.closest(".elements__title");
+}
 
 render();
 
+//Попап для изображения и заголовка карточек
+
+const popupImg = document.querySelector(".popup-img");
+const clousePopupImg = document.querySelector(".popup-img__clouse");
+const image = popupImg.querySelector(".popup-img__image");
+
+const altImg = popupImg.querySelector(".popup-img__heading");
+
+clousePopupImg.addEventListener("click", togglePopupImg);

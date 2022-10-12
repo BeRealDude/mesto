@@ -1,8 +1,5 @@
 @import url(../vendor/normalize/normalize.css);
 @import url(../vendor/fonts/Inter_Web/inter.css);
-
-
-
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/elements/__buttun-like/elements__buttun-like.css);
@@ -13,24 +10,12 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__buttun-delete/elements__buttun-delete.css);
 @import url(../blocks/buttun-like_active/buttun-like_active.css);
-
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-@import url(../);
-/*@import url(../blocks/popup-add/__text/popup-add__text.css);
-@import url(../blocks/popup-add/__heading/popup-add__heading.css);
-@import url(../blocks/popup-add/__clouse/popup-add__clouse.css);
-@import url(../blocks/popup-add/__container/popup-add__container.css);
-@import url(../blocks/popup-add/popup-add.css);
-@import url(../blocks/popup-add_opened/popup-add_opened.css);*/
-
+@import url(../blocks/popup-img/__heading/popup-img__heading.css);
+@import url(../blocks/popup-img/__image/popup-img__image.css);
+@import url(../blocks/popup-img/__container/popup-img__container.css);
+@import url(../blocks/popup-img/__clouse/popup-img__clouse.css);
+@import url(../blocks/popup-img/popup-img.css);
+@import url(../blocks/popup-imgOpen/popup-imgOpen.css);
 @import url(../blocks/form/__submit-btn/form__submit-btn.css);
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/form/form.css);
@@ -39,16 +24,12 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup_opened/popup_opened.css);
-
-
 @import url(../blocks/popup-add/__text/popup-add__text.css);
 @import url(../blocks/popup-add/__heading/popup-add__heading.css);
 @import url(../blocks/popup-add/__clouse/popup-add__clouse.css);
 @import url(../blocks/popup-add/__container/popup-add__container.css);
 @import url(../blocks/popup-add/popup-add.css);
 @import url(../blocks/popup-add_open-popup/popup-add_open-popup.css);
-
-
 @import url(../blocks/profile-info/__edit-button/profile-info__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile-info/__activity/profile-info__activity.css);
