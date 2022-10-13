@@ -28,33 +28,33 @@
     <footer class="footer">
         <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
-    <section class="popup">
+    <section class="popup profile-popup">
         <div class="popup__container">
             <button type="button" class="popup__clouse"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="form">
-                <input class="popup__text popup__text_type_name" type="text" name="name" id="name" placeholder="Введите имя">
-                <input class="popup__text popup__text_type_activity" type="text" name="activity" id="activity" placeholder="Чем вы занимаетесь">
+                <input class="popup__text" type="text" name="name" id="name" placeholder="Введите имя">
+                <input class="popup__text" type="text" name="activity" id="activity" placeholder="Чем вы занимаетесь">
                 <button type="submit" class="form__submit-btn">Сохранить</button>
             </form>
         </div>
     </section>
-    <section class="popup-add">
-        <div class="popup-add__container">
-            <button type="button" class="popup-add__clouse"></button>
-            <h2 class="popup-add__heading">Новое место</h2>
+    <section class="popup elements-popup">
+        <div class="popup__container">
+            <button type="button" class="popup__clouse" id="close-elements-popup"></button>
+            <h2 class="popup__heading">Новое место</h2>
             <form class="form" id="formAdd">
-                <input class="popup-add__text popup-add__text_type_name" type="text" name="title" id="title" placeholder="Название">
-                <input class="popup-add__text popup-add__text_type_place" type="href" name="place" id="place" placeholder="Ссылка на картинку">
+                <input class="popup__text" type="text" name="title" id="title" placeholder="Название">
+                <input class="popup__text" type="href" name="place" id="place" placeholder="Ссылка на картинку">
                 <button type="submit" class="form__submit-btn" id="creat">Создать</button>
             </form>
         </div>
     </section>
-    <section class="popup-img">
-        <div class="popup-img__container">
-            <button type="button" class="popup-img__clouse"></button>
-            <img class="popup-img__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Карача">
-            <h2 class="popup-img__heading"></h2>
+    <section class="popup popup_bg popup-img">
+        <div class="popup__container popup_imgCont">
+            <button type="button" class="popup__clouse" id="close-img-popup"></button>
+            <img class="popup__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Карача">
+            <h2 class="popup__alt"></h2>
         </div>
     </section>
     <template class="template">

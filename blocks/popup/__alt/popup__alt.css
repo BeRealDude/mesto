@@ -1,4 +1,4 @@
-.popup-img__heading{
+.popup__alt{
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 915px) {
-    .popup-img__heading{
+    .popup__alt{
         margin-top: 4.2%;
     }
 }
