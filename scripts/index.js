@@ -1,11 +1,11 @@
-const popupOpenedButton = document.querySelector(".profile-info__open-popup");
-const popup = document.querySelector(".profile-popup");
-const popupClouseButton = popup.querySelector(".popup__clouse");
+const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
+const profilePopup = document.querySelector(".profile-popup");
+const profilePopupCloseBtn = profilePopup.querySelector(".popup__clouse");
 
 const profileName = document.querySelector(".profile-info__name");
 const profileActivity = document.querySelector(".profile-info__activity");
 
-const form = document.querySelector(".form");
+const profileForm = profilePopup.querySelector(".form");
 
 const nameInput = document.querySelector("#name");
 const activityInput = document.querySelector("#activity");
@@ -13,32 +13,32 @@ const activityInput = document.querySelector("#activity");
 profileName.textContent = "Жак-Ив Кусто";
 profileActivity.textContent = "Исследователь океана";
 
-function openPopup(popup) {
-  popup.classList.add("popup_opened");
+function openPopup(profilePopup) {
+  profilePopup.classList.add("popup_opened");
 }
 
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
+function closePopup(profilePopup) {
+  profilePopup.classList.remove("popup_opened");
 }
 
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  closePopup(popup);
+  closePopup(profilePopup);
   profileName.textContent = nameInput.value;
   profileActivity.textContent = activityInput.value;
 }
 
-popupClouseButton.addEventListener("click", () => {
-  closePopup(popup);
+profilePopupCloseBtn.addEventListener("click", () => {
+  closePopup(profilePopup);
 });
 
-popupOpenedButton.addEventListener("click", () => {
-  openPopup(popup);
+profilePopupOpenBtn.addEventListener("click", () => {
+  openPopup(profilePopup);
   nameInput.value = profileName.textContent;
   activityInput.value = profileActivity.textContent;
 });
 
-form.addEventListener("submit", formSubmitHandler);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 const initialCards = [
   {
@@ -97,7 +97,7 @@ const render = () => {
     ulElements.append(currentItem);
   });
 
-  formAdd.addEventListener("submit", formAddSubmitHandler);
+  formAdd.addEventListener("submit", handleCardFormSubmit);
 };
 
 const createCardNode = (name, link) => {
@@ -127,7 +127,7 @@ const createCardNode = (name, link) => {
   return currentItem;
 };
 
-const formAddSubmitHandler = (evt) => {
+const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
   closePopup(popupAddPlace);
   const card = createCardNode(titleInput.value, placeInput.value);
