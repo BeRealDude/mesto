@@ -70,7 +70,7 @@ const initialCards = [
 //Попап для карточек
 const openPopupAdd = document.querySelector(".profile__open-popup");
 const popupAddPlace = document.querySelector(".elements-popup");
-const clousePopupAdd = document.querySelector("#close-elements-popup");
+const clousePopupAdd = popupAddPlace.querySelector(".popup__clouse");
 
 clousePopupAdd.addEventListener("click", () => {
   closePopup(popupAddPlace);
@@ -82,7 +82,7 @@ openPopupAdd.addEventListener("click", () => {
 
 //Добавление новых карточек
 
-const formAdd = document.querySelector("#formAdd");
+const formAdd = popupAddPlace.querySelector(".form");
 
 const ulElements = document.querySelector(".elements");
 const template = document.querySelector(".template");
@@ -151,7 +151,7 @@ const image = popupImg.querySelector(".popup__image");
 
 const altImg = popupImg.querySelector(".popup__alt");
 
-const clousePopupImg = document.querySelector("#close-img-popup");
+const clousePopupImg = popupImg.querySelector(".popup__clouse");
 
 clousePopupImg.addEventListener("click", () => {
   closePopup(popupImg);
