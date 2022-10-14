@@ -68,15 +68,15 @@ const initialCards = [
 ];
 
 //Попап для карточек
-const openPopupAdd = document.querySelector(".profile__open-popup");
+const popupAddOpenBtn = document.querySelector(".profile__open-popup");
 const popupAddPlace = document.querySelector(".elements-popup");
-const clousePopupAdd = popupAddPlace.querySelector(".popup__clouse");
+const popupAddCloseBtn = popupAddPlace.querySelector("#popup-add-close");
 
-clousePopupAdd.addEventListener("click", () => {
+popupAddCloseBtn.addEventListener("click", () => {
   closePopup(popupAddPlace);
 });
 
-openPopupAdd.addEventListener("click", () => {
+popupAddOpenBtn.addEventListener("click", () => {
   openPopup(popupAddPlace);
 });
 
