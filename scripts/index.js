@@ -5,10 +5,15 @@ const profilePopupCloseBtn = profilePopup.querySelector(".popup__clouse");
 const profileName = document.querySelector(".profile-info__name");
 const profileActivity = document.querySelector(".profile-info__activity");
 
-const profileForm = profilePopup.querySelector(".form");
+const profileForm = profilePopup.querySelector("#user");
+const nameInput = document.querySelector("#user-name");
+const activityInput = document.querySelector("#user-activity");
 
-const nameInput = document.querySelector("#name");
-const activityInput = document.querySelector("#activity");
+const userNameError = document.querySelector("#user-name-error");
+const activityError = document.querySelector("#user-activity-error");
+
+const formSubmitBtn = document.querySelector(".form__submit-btn");
+
 
 profileName.textContent = "Жак-Ив Кусто";
 profileActivity.textContent = "Исследователь океана";
@@ -19,6 +24,24 @@ function openPopup(profilePopup) {
 
 function closePopup(profilePopup) {
   profilePopup.classList.remove("popup_opened");
+
+  userNameError.textContent = "";
+  activityError.textContent = "";
+ 
+  nameInput.classList.remove('popup__text_error');
+  activityInput.classList.remove('popup__text_error'); 
+
+
+  pointTitleError.textContent = "";
+  pointPlaceError.textContent = "";
+ 
+  titleInput.classList.remove('popup__text_error');
+  placeInput.classList.remove('popup__text_error'); 
+
+  titleInput.value = "";
+  placeInput.value = "";
+
+ 
 }
 
 function handleProfileFormSubmit(evt) {
@@ -28,15 +51,75 @@ function handleProfileFormSubmit(evt) {
   profileActivity.textContent = activityInput.value;
 }
 
+
 profilePopupCloseBtn.addEventListener("click", () => {
+  
   closePopup(profilePopup);
+  
 });
+
+
+
+//Закрытие попапа на Escape
+const closePopupByEscape = (evt) => { 
+  const PopupByEscape = document.querySelector(".popup");
+  if(evt.key === "Escape"){
+    closePopup(PopupByEscape);
+    closePopup(popupAddPlace);
+    closePopup(popupImg);
+    console.log(evt)
+  }
+}
+document.addEventListener("keydown", closePopupByEscape)
+
+
+
+
+//Закрытие попа по клику на оверлей
+
+const popupOverlay = Array.from(document.querySelectorAll(".popup"));
+popupOverlay.forEach((overlay) => {
+  overlay.addEventListener('click', (evt) => {
+    if(evt.target === evt.currentTarget){
+      closePopup(overlay);
+      
+      
+    }
+  });
+});
+
+ //Закрытие попа по клику на оверлей (а можно так)
+/*const closePopupByOverlay = function (event) {
+  if(event.target === event.currentTarget){
+    closePopup(popupOverlay);
+    
+  }
+};
+popupOverlay.addEventListener("click", closePopupByOverlay)
+*/
+ 
+
+
+/*
+function closePopupByEscape (e) {
+  const PopupByEscape = document.querySelector(".popup")
+  if(e.key === "Escape"){
+    closePopup(PopupByEscape);
+  }
+}
+
+document.addEventListener("keydown", closePopupByEscape)*/
+
 
 profilePopupOpenBtn.addEventListener("click", () => {
   openPopup(profilePopup);
   nameInput.value = profileName.textContent;
   activityInput.value = profileActivity.textContent;
+  turnOnBtn(formSubmitBtn);
 });
+
+
+
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
@@ -72,23 +155,43 @@ const popupAddOpenBtn = document.querySelector(".profile__open-popup");
 const popupAddPlace = document.querySelector(".elements-popup");
 const popupAddCloseBtn = popupAddPlace.querySelector("#popup-add-close");
 
+const pointTitleError = document.querySelector("#point-title-error");
+const pointPlaceError = document.querySelector("#point-place-error");
+ 
+
+
 popupAddCloseBtn.addEventListener("click", () => {
   closePopup(popupAddPlace);
+  
+  /*pointTitleError.textContent = "";
+  pointPlaceError.textContent = "";
+ 
+  titleInput.classList.remove('popup__text_error');
+  placeInput.classList.remove('popup__text_error'); 
+
+  titleInput.value = "";
+  placeInput.value = "";
+*/
+
+  
+
+  
 });
 
 popupAddOpenBtn.addEventListener("click", () => {
   openPopup(popupAddPlace);
+  enableValidation()
 });
 
 //Добавление новых карточек
 
-const formAdd = popupAddPlace.querySelector(".form");
+const formAdd = popupAddPlace.querySelector("#point");
 
 const ulElements = document.querySelector(".elements");
 const template = document.querySelector(".template");
 
-const titleInput = document.querySelector("#title");
-const placeInput = document.querySelector("#place");
+const titleInput = document.querySelector("#point-title");
+const placeInput = document.querySelector("#point-place");
 
 const render = () => {
   initialCards.forEach((card) => {
@@ -129,11 +232,11 @@ const createCardNode = (name, link) => {
 
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
-  closePopup(popupAddPlace);
+  
   const card = createCardNode(titleInput.value, placeInput.value);
   ulElements.prepend(card);
-  titleInput.value = "";
-  placeInput.value = "";
+  //evt.target.reset();
+  closePopup(popupAddPlace);
 };
 
 const deleteCardNode = (e) => {
@@ -156,3 +259,13 @@ const clousePopupImg = popupImg.querySelector(".popup__clouse");
 clousePopupImg.addEventListener("click", () => {
   closePopup(popupImg);
 });
+
+
+
+  /*const over = Array.from(document.querySelectorAll('.popup'));
+  over.forEach((overlay) => {
+    overlay.addEventListener('click', (evt) => {
+      evt.target.classList.remove("popup_opened");
+    });
+    
+});*/
