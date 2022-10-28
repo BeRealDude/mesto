@@ -1,3 +1,5 @@
+
+
 const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
 const profilePopup = document.querySelector(".profile-popup");
 const profilePopupCloseBtn = profilePopup.querySelector(".popup__clouse");
@@ -115,7 +117,7 @@ profilePopupOpenBtn.addEventListener("click", () => {
   openPopup(profilePopup);
   nameInput.value = profileName.textContent;
   activityInput.value = profileActivity.textContent;
-  turnOnBtn(formSubmitBtn);
+  //turnOnBtn(formSubmitBtn);
 });
 
 
@@ -180,7 +182,7 @@ popupAddCloseBtn.addEventListener("click", () => {
 
 popupAddOpenBtn.addEventListener("click", () => {
   openPopup(popupAddPlace);
-  enableValidation()
+  enableValidation(settings)
 });
 
 //Добавление новых карточек
