@@ -10,6 +10,7 @@ const nameInput = document.querySelector("#user-name");
 const activityInput = document.querySelector("#user-activity");
 const userNameError = document.querySelector("#user-name-error");
 const activityError = document.querySelector("#user-activity-error");
+const formSubmitBtn = document.querySelector(".form__submit-btn");
 
 //Попап для карточек
 const popupAddOpenBtn = document.querySelector(".profile__open-popup");
@@ -30,10 +31,21 @@ const imageOfPopup = popupImage.querySelector(".popup__image");
 const captionImageOfPopup = popupImage.querySelector(".popup__alt");
 const closePopupImage = popupImage.querySelector(".popup__close");
 
+const profileSubmitBtn = profilePopup.querySelector(".form__submit-btn");
+const popupAddPlaceSubmitBtn = popupAddPlace.querySelector(".form__submit-btn");
+
 profileName.textContent = "Жак-Ив Кусто";
 profileActivity.textContent = "Исследователь океана";
 
+function deactivateButton(button) {
+  button.classList.add("form__submit-btn_invalid");
+  button.disabled = true;
+}
+
 function removeErrorClass() {
+  deactivateButton(popupAddPlaceSubmitBtn);
+  deactivateButton(profileSubmitBtn);
+
   userNameError.textContent = "";
   activityError.textContent = "";
   nameInput.classList.remove("popup__text_error");
@@ -78,6 +90,7 @@ popups.forEach((overlay) => {
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
+  deactivateButton(profileSubmitBtn);
   closePopup(profilePopup);
   profileName.textContent = nameInput.value;
   profileActivity.textContent = activityInput.value;
@@ -116,6 +129,7 @@ const handleCardFormSubmit = (evt) => {
   ulElements.prepend(card);
   closePopup(popupAddPlace);
   evt.target.reset();
+  deactivateButton(popupAddPlaceSubmitBtn);
 };
 
 const deleteCardNode = (e) => {
