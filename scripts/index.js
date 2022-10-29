@@ -33,7 +33,7 @@ const closePopupImage = popupImage.querySelector(".popup__close");
 profileName.textContent = "Жак-Ив Кусто";
 profileActivity.textContent = "Исследователь океана";
 
-function removingErrorClass() {
+function removeErrorClass() {
   userNameError.textContent = "";
   activityError.textContent = "";
   nameInput.classList.remove("popup__text_error");
@@ -61,9 +61,9 @@ function closePopupByEscape(evt) {
   if (evt.key !== "Escape") {
     return;
   }
-  const popupClassOpened = document.querySelector(".popup_opened");
-  closePopup(popupClassOpened);
-  removingErrorClass();
+  const popupOpened = document.querySelector(".popup_opened");
+  closePopup(popupOpened);
+  removeErrorClass();
 }
 
 const popups = Array.from(document.querySelectorAll(".popup"));
@@ -71,7 +71,7 @@ popups.forEach((overlay) => {
   overlay.addEventListener("click", (evt) => {
     if (evt.target === evt.currentTarget) {
       closePopup(overlay);
-      removingErrorClass();
+      removeErrorClass();
     }
   });
 });
@@ -131,17 +131,16 @@ profilePopupOpenBtn.addEventListener("click", () => {
 
 popupAddOpenBtn.addEventListener("click", () => {
   openPopup(popupAddPlace);
-  enableValidation(settings);
 });
 
 profilePopupCloseBtn.addEventListener("click", () => {
   closePopup(profilePopup);
-  removingErrorClass();
+  removeErrorClass();
 });
 
 popupAddCloseBtn.addEventListener("click", () => {
   closePopup(popupAddPlace);
-  removingErrorClass();
+  removeErrorClass();
 });
 
 closePopupImage.addEventListener("click", () => {
