@@ -1,4 +1,4 @@
-.elements__buttun-like{
+.elements__button-like{
     background-image: url(../../../images/Vector.svg);
     width: 22px;
     height: 19px;
@@ -12,13 +12,7 @@
     
 }
 
-.elements__buttun-like:hover{
+.elements__button-like:hover{
     transition: 0.3s;
     opacity: 0.6;
 }
-
-/*.elements__buttun-like:active{
-    background-image: url(../../../images/blackLike.svg);
-    opacity: 1;
-    transition: 0.0s;
-}*/

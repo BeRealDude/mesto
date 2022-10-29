@@ -14,3 +14,15 @@
 .form__error:last-of-type{
     top: 93px;
 }
+
+@media (max-width: 915px) {
+    .form__error{
+        top: 28px;
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .form__error:last-of-type{
+        top: 84px;
+    }
+}

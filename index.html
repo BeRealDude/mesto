@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="pages/index.css">
+    <script defer src="scripts/index.js"></script>
+    <script defer src="scripts/validate.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://practicum.yandex.ru" type="image/png">
     <title>mesto</title>
@@ -31,7 +33,7 @@
     </footer>
     <section class="popup profile-popup">
         <div class="popup__container">
-            <button type="button" class="popup__clouse"></button>
+            <button type="button" class="popup__close"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="form" name="user" id="user" novalidate>
                 <input required minlength="2" maxlength="40" class="popup__text" type="text" name="user-name" id="user-name" placeholder="Имя">
@@ -44,35 +46,33 @@
     </section>
     <section class="popup elements-popup">
         <div class="popup__container">
-            <button type="button" class="popup__clouse" id="popup-add-close"></button>
+            <button type="button" class="popup__close" id="popup-add-close"></button>
             <h2 class="popup__heading">Новое место</h2>
-            <form class="form" name="point" id="point" novalidate>
-                <input required minlength="2" maxlength="30" class="popup__text" type="text" name="point-title" id="point-title" placeholder="Название">
-                <span class="form__error point-title-error" id="point-title-error"></span>
-                <input required class="popup__text" type="url" name="point-place" id="point-place" placeholder="Ссылка на картинку">
-                <span class="form__error point-place-error" id="point-place-error"></span>
+            <form class="form" name="formCard" id="formCard" novalidate>
+                <input required minlength="2" maxlength="30" class="popup__text" type="text" name="formCard-title" id="formCard-title" placeholder="Название">
+                <span class="form__error formCard-title-error" id="formCard-title-error"></span>
+                <input required class="popup__text" type="url" name="formCard-place" id="formCard-place" placeholder="Ссылка на картинку">
+                <span class="form__error formCard-place-error" id="formCard-place-error"></span>
                 <button type="submit" class="form__submit-btn">Создать</button>
             </form>
         </div>
     </section>
     <section class="popup popup_bg popup-img">
         <div class="popup__container popup__container_imgCont">
-            <button type="button" class="popup__clouse"></button>
+            <button type="button" class="popup__close"></button>
             <img class="popup__image" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Карача">
             <h2 class="popup__alt"></h2>
         </div>
     </section>
     <template class="template">
         <li class="elements__item">
-            <button type="button" class="elements__buttun-delete"></button>
-            <img class="elements__maskGroup elements__popup-img" src="images/kirill-pershin-1088404-unsplash.jpg" alt="Карача">
+            <button type="button" class="elements__button-delete"></button>
+            <img class="elements__maskGroup elements__popup-img" src="#" alt="Карача">
             <div class="elements__wrapper">
                 <h2 class="elements__title"></h2>
-                <button type="button" class="elements__buttun-like"></button>
+                <button type="button" class="elements__button-like"></button>
             </div>
         </li>
     </template>
-    <script src="scripts/index.js"></script>
-    <script src="scripts/validate.js"></script>
 </body>
 </html>

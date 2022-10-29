@@ -4,6 +4,8 @@
     border-radius: 10px 10px 0 0;
     cursor: pointer;
     object-fit: cover;
+    background-color: black;
+    color: white;
 }
 
 .elements__maskGroup:hover{

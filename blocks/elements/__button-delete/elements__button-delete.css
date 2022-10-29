@@ -1,4 +1,4 @@
-.elements__buttun-delete{
+.elements__button-delete{
     background-image: url(../../../images/delete.svg);
     width: 18px;
     height: 19px;
@@ -13,7 +13,7 @@
     z-index: 1;
 }
 
-.elements__buttun-delete:hover{
+.elements__button-delete:hover{
     transition: 0.3s;
     opacity: 0.6;
 }
