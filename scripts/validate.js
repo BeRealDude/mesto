@@ -16,11 +16,11 @@ function enableValidation(settings) {
       evt.preventDefault();
     });
 
-    setEventListeners(formElement);
+    setEventListeners(formElement, settings);
   });
 }
 
-function setEventListeners(formElement) {
+function setEventListeners(formElement, settings) {
   const inputList = Array.from(formElement.querySelectorAll(settings.input));
   const buttonElement = formElement.querySelector(settings.submitButton);
   toggleButtonState(inputList, buttonElement, settings);
