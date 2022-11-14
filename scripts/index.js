@@ -1,4 +1,4 @@
-
+import Card from './Card.js';
 
 const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
 const profilePopup = document.querySelector(".profile-popup");
@@ -20,16 +20,16 @@ const formCardTitleError = document.querySelector("#formCard-title-error");
 const formCardPlaceError = document.querySelector("#formCard-place-error");
 
 const formCard = popupAddPlace.querySelector("#formCard");
-const ulElements = document.querySelector(".elements");
-const template = document.querySelector(".template");
+//const ulElements = document.querySelector(".elements");
+//const template = document.querySelector(".template");
 const titleInput = document.querySelector("#formCard-title");
 const placeInput = document.querySelector("#formCard-place");
 
 //Попап для изображения и заголовка карточек
-const popupImage = document.querySelector(".popup-img");
+/*const popupImage = document.querySelector(".popup-img");
 const imageOfPopup = popupImage.querySelector(".popup__image");
 const captionImageOfPopup = popupImage.querySelector(".popup__alt");
-const closePopupImage = popupImage.querySelector(".popup__close");
+const closePopupImage = popupImage.querySelector(".popup__close");*/
 
 const profileSubmitBtn = profilePopup.querySelector(".form__submit-btn");
 const popupAddPlaceSubmitBtn = popupAddPlace.querySelector(".form__submit-btn");
@@ -96,46 +96,48 @@ function handleProfileFormSubmit(evt) {
   profileActivity.textContent = activityInput.value;
 }
 
-const createCardNode = (name, link) => {
+/*const createCardNode = (name, link) => {
   const currentItem = template.content.cloneNode(true);
   const elementsImg = currentItem.querySelector(".elements__maskGroup");
   const elementsTitle = currentItem.querySelector(".elements__title");
   elementsImg.src = link;
   elementsImg.alt = name;
-  elementsTitle.textContent = name;
+  elementsTitle.textContent = name;*/
 
-  const like = currentItem.querySelector(".elements__button-like");
+  /*const like = currentItem.querySelector(".elements__button-like");
   like.addEventListener("click", function (evt) {
     evt.target.classList.toggle("button-like_active");
   });
 
   const deleteBtn = currentItem.querySelector(".elements__button-delete");
-  deleteBtn.addEventListener("click", deleteCardNode);
+  deleteBtn.addEventListener("click", deleteCardNode);*/
 
-  const openPopupImg = currentItem.querySelector(".elements__popup-img");
+  /*const openPopupImg = currentItem.querySelector(".elements__popup-img");
   openPopupImg.addEventListener("click", () => {
     openPopup(popupImage);
     imageOfPopup.src = link;
     imageOfPopup.alt = name;
     captionImageOfPopup.textContent = name;
-  });
+  });*/
 
-  return currentItem;
-};
+ /*return currentItem;
+};*/
+ 
 
-const handleCardFormSubmit = (evt) => {
+const handleCardFormSubmit = (evt) => { 
+  createCardNode();
   evt.preventDefault();
-  const card = createCardNode(titleInput.value, placeInput.value);
-  ulElements.prepend(card);
+  //const card = createCardNode(titleInput.value, placeInput.value);
+  //ulElements.prepend(card);
   closePopup(popupAddPlace);
   evt.target.reset();
   deactivateButton(popupAddPlaceSubmitBtn);
 };
 
-const deleteCardNode = (e) => {
+/*const deleteCardNode = (e) => {
   const currentEl = e.target.closest(".elements__item");
   currentEl.remove();
-};
+};*/
 
 profilePopupOpenBtn.addEventListener("click", () => {
   openPopup(profilePopup);
@@ -157,9 +159,9 @@ popupAddCloseBtn.addEventListener("click", () => {
   removeErrorClass();
 });
 
-closePopupImage.addEventListener("click", () => {
+/*closePopupImage.addEventListener("click", () => {
   closePopup(popupImage);
-});
+});*/
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
@@ -192,7 +194,7 @@ const initialCards = [
   },
 ];
 
-const renderInitialCards = () => {
+/*const renderInitialCards = () => {
   initialCards.forEach((card) => {
     const currentItem = createCardNode(card.name, card.link);
 
@@ -201,3 +203,22 @@ const renderInitialCards = () => {
 };
 
 renderInitialCards();
+*/
+
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '.template');
+  const cardElement = card.generateCard();
+
+  
+  document.querySelector('.elements').append(cardElement);
+}); 
+
+
+
+const createCardNode = function () {
+  const card = new Card({ name: titleInput.value, link: placeInput.value }, '.template');
+  const cardElement = card.generateCard();
+
+  document.querySelector('.elements').prepend(cardElement);
+}
