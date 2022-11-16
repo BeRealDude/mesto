@@ -13,6 +13,7 @@
 * Адаптивная вёрстка
 * Java Script
 * Валидация форм 
+* ООП
 
 #### Ссылка на проект:
 https://berealdude.github.io/mesto/
