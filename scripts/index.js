@@ -1,4 +1,16 @@
-import Card from './Card.js';
+
+
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
+const settings = {
+  form: ".form",
+  input: ".popup__text",
+  submitButton: ".form__submit-btn",
+  inactiveButton: "form__submit-btn_invalid",
+  inputError: "popup__text_error",
+  errorClass: "form__error_active",
+};
 
 const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
 const profilePopup = document.querySelector(".profile-popup");
@@ -10,7 +22,7 @@ const nameInput = document.querySelector("#user-name");
 const activityInput = document.querySelector("#user-activity");
 const userNameError = document.querySelector("#user-name-error");
 const activityError = document.querySelector("#user-activity-error");
-const formSubmitBtn = document.querySelector(".form__submit-btn");
+//const formSubmitBtn = document.querySelector(".form__submit-btn");
 
 //Попап для карточек
 const popupAddOpenBtn = document.querySelector(".profile__open-popup");
@@ -104,7 +116,7 @@ function handleProfileFormSubmit(evt) {
   elementsImg.alt = name;
   elementsTitle.textContent = name;*/
 
-  /*const like = currentItem.querySelector(".elements__button-like");
+/*const like = currentItem.querySelector(".elements__button-like");
   like.addEventListener("click", function (evt) {
     evt.target.classList.toggle("button-like_active");
   });
@@ -112,7 +124,7 @@ function handleProfileFormSubmit(evt) {
   const deleteBtn = currentItem.querySelector(".elements__button-delete");
   deleteBtn.addEventListener("click", deleteCardNode);*/
 
-  /*const openPopupImg = currentItem.querySelector(".elements__popup-img");
+/*const openPopupImg = currentItem.querySelector(".elements__popup-img");
   openPopupImg.addEventListener("click", () => {
     openPopup(popupImage);
     imageOfPopup.src = link;
@@ -120,11 +132,10 @@ function handleProfileFormSubmit(evt) {
     captionImageOfPopup.textContent = name;
   });*/
 
- /*return currentItem;
+/*return currentItem;
 };*/
- 
 
-const handleCardFormSubmit = (evt) => { 
+const handleCardFormSubmit = (evt) => {
   createCardNode();
   evt.preventDefault();
   //const card = createCardNode(titleInput.value, placeInput.value);
@@ -205,20 +216,22 @@ const initialCards = [
 renderInitialCards();
 */
 
+new FormValidator(settings, profileForm).enableValidation();
+new FormValidator(settings, formCard).enableValidation();
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.template');
+  const card = new Card(item, ".template");
   const cardElement = card.generateCard();
 
-  
-  document.querySelector('.elements').append(cardElement);
-}); 
-
-
+  document.querySelector(".elements").append(cardElement);
+});
 
 const createCardNode = function () {
-  const card = new Card({ name: titleInput.value, link: placeInput.value }, '.template');
+  const card = new Card(
+    { name: titleInput.value, link: placeInput.value },
+    ".template"
+  );
   const cardElement = card.generateCard();
 
-  document.querySelector('.elements').prepend(cardElement);
-}
+  document.querySelector(".elements").prepend(cardElement);
+};
