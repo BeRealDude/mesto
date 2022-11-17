@@ -1,12 +1,9 @@
-
-
-const popupImage = document.querySelector(".popup-img");
-const imageOfPopup = popupImage.querySelector(".popup__image");
-const captionImageOfPopup = popupImage.querySelector(".popup__alt");
-const closePopupImage = popupImage.querySelector(".popup__close");
-
-const popups = Array.from(document.querySelectorAll(".popup"));
-
+import {
+  openPopup,
+  popupImage,
+  imageOfPopup,
+  captionImageOfPopup,
+} from "./index.js";
 class Card {
   constructor(data, templateSelector) {
     (this._name = data.name), (this._link = data.link);
@@ -23,26 +20,24 @@ class Card {
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".elements__button-like")
-      .addEventListener("click", () => {
-        this._likeCard();
-      });
+    this._buttonLike = this._element.querySelector(".elements__button-like");
+    this._buttonDelete = this._element.querySelector(
+      ".elements__button-delete"
+    );
+    this._buttonOpenPopupImg = this._element.querySelector(
+      ".elements__popup-img"
+    );
 
-    this._element
-      .querySelector(".elements__button-delete")
-      .addEventListener("click", () => {
-        this._deleteCard();
-      });
+    this._buttonLike.addEventListener("click", () => {
+      this._likeCard();
+    });
 
-    this._element
-      .querySelector(".elements__popup-img")
-      .addEventListener("click", () => {
-        this._openPopupImg();
-      });
+    this._buttonDelete.addEventListener("click", () => {
+      this._deleteCard();
+    });
 
-    closePopupImage.addEventListener("click", () => {
-      this._closePopupImg();
+    this._buttonOpenPopupImg.addEventListener("click", () => {
+      this._handleClickImage();
     });
   }
 
@@ -53,38 +48,15 @@ class Card {
   }
 
   _deleteCard() {
-    this._element.closest(".elements__item").remove();
+    this._element.remove();
+    this._element = null;
   }
 
-  _openPopupImg() {
-    popupImage.classList.add("popup_opened");
-    document.addEventListener("keydown", this._closePopupByEscape);
+  _handleClickImage() {
+    openPopup(popupImage);
     imageOfPopup.src = this._link;
     imageOfPopup.alt = this._name;
     captionImageOfPopup.textContent = this._name;
-  }
-
-  _closePopupImg() {
-    popupImage.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._closePopupByEscape);
-  }
-
-  _closePopupByEscape = (evt) => {
-    if (evt.key !== "Escape") {
-      return;
-    }
-    const popupOpened = document.querySelector(".popup_opened");
-    this._closePopupImg(popupOpened);
-  };
-
-  _closeByOverlay() {
-    popups.forEach((overlay) => {
-      overlay.addEventListener("click", (evt) => {
-        if (evt.target === evt.currentTarget) {
-          this._closePopupImg(overlay);
-        }
-      });
-    });
   }
 
   generateCard() {
