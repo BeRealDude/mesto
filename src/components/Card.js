@@ -3,7 +3,7 @@ import {
   popupImage,
   imageOfPopup,
   captionImageOfPopup,
-} from "./index.js";
+} from "../pages/index.js";
 class Card {
   constructor(data, templateSelector) {
     (this._name = data.name), (this._link = data.link);

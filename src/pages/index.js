@@ -1,6 +1,11 @@
-import { settings, initialCards } from "./constants.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import { settings, initialCards, profileInfo } from "../utils/constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+
 
 const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
 const profilePopup = document.querySelector(".profile-popup");
@@ -69,12 +74,16 @@ function handleProfileFormSubmit(evt) {
 
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
-  const date = {
+  /* const date = {
     name: titleInput.value,
     link: placeInput.value,
-  };
-  const card = createCard(date);
-  ulElements.prepend(card);
+  };*/
+  const card = new Card(
+    { name: titleInput.value, link: placeInput.value },
+    ".template"
+  );
+  //createCard(date);
+  cards.addItem(card.generateCard());
 
   closePopup(popupAddPlace);
   evt.target.reset();
@@ -119,13 +128,34 @@ const placeAddValidator = new FormValidator(settings, formCard);
 profileValidator.enableValidation();
 placeAddValidator.enableValidation();
 
-function createCard(date) {
+/*function createCard(date) {
   const card = new Card(date, ".template");
   const cardElement = card.generateCard();
   return cardElement;
-}
+}*/
 
-initialCards.forEach((item) => {
+/*initialCards.forEach((item) => {
   const card = createCard(item);
   ulElements.append(card);
-});
+});*/
+
+const cards = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, ".template");
+      const cardElement = card.generateCard();
+      cards.addItem(cardElement);
+    },
+  },
+  ulElements
+);
+
+cards.renderItems();
+
+const popupPicture = new PopupWithImage(popupImage);
+popupPicture.setEventListeners();
+
+const profileForma = new PopupWithForm(profileForm, {
+  
+})
