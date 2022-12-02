@@ -1,12 +1,14 @@
-import {
-  openPopup,
-  popupImage,
+/*import {
+  //openPopup,
+ // popupImage,
   imageOfPopup,
   captionImageOfPopup,
-} from "../pages/index.js";
+} from "../pages/index.js";*/
 class Card {
-  constructor(data, templateSelector) {
-    (this._name = data.name), (this._link = data.link);
+  constructor( {data, handleCardClick} , templateSelector) {
+    this._name = data.name;
+    this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }
 
@@ -17,6 +19,17 @@ class Card {
       .cloneNode(true);
 
     return cardElement;
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    this._setEventListeners();
+
+    this._element.querySelector(".elements__maskGroup").src = this._link;
+    this._element.querySelector(".elements__title").textContent = this._name;
+    this._element.querySelector(".elements__maskGroup").alt = this._name;
+
+    return this._element;
   }
 
   _setEventListeners() {
@@ -37,7 +50,7 @@ class Card {
     });
 
     this._buttonOpenPopupImg.addEventListener("click", () => {
-      this._handleClickImage();
+      this._handleCardClick(this._link, this._name);
     });
   }
 
@@ -52,23 +65,13 @@ class Card {
     this._element = null;
   }
 
-  _handleClickImage() {
-    openPopup(popupImage);
+  /*_handleCardClick() {
     imageOfPopup.src = this._link;
     imageOfPopup.alt = this._name;
     captionImageOfPopup.textContent = this._name;
-  }
+  }*/
 
-  generateCard() {
-    this._element = this._getTemplate();
-    this._setEventListeners();
-
-    this._element.querySelector(".elements__maskGroup").src = this._link;
-    this._element.querySelector(".elements__title").textContent = this._name;
-    this._element.querySelector(".elements__maskGroup").alt = this._name;
-
-    return this._element;
-  }
+  
 }
 
 export default Card;
