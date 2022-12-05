@@ -1,10 +1,12 @@
-import { settings, initialCards} from "../utils/constants.js";
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
+import './pages/index.css';
+
+import { settings, initialCards } from "./utils/constants.js";
+import Card from "./components/Card.js";
+import FormValidator from "./components/FormValidator.js";
+import Section from "./components/Section.js";
+import PopupWithImage from "./components/PopupWithImage.js";
+import PopupWithForm from "./components/PopupWithForm.js";
+import UserInfo from "./components/UserInfo.js";
 
 const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
 const profilePopup = document.querySelector(".profile-popup");
@@ -34,8 +36,6 @@ const buttonClosePopupImage = popupImage.querySelector(".popup__close");
 
 profileName.textContent = "Жак-Ив Кусто";
 profileActivity.textContent = "Исследователь океана";
-
-
 
 /*const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
@@ -90,9 +90,8 @@ buttonClosePopupImage.addEventListener("click", () => {
 
 const infoUserProfile = {
   profileName: "user-name",
-  profileActivity: "user-activity"
-}
-
+  profileActivity: "user-activity",
+};
 
 const handleCardClick = (name, link) => {
   popupPicture.open(name, link);
@@ -126,39 +125,41 @@ function createCard(data) {
   return cardElement;
 }
 
-const handleCardFormSubmit = () => cards.addItem(createCard({ name: titleInput.value, link: placeInput.value }));
+const handleCardFormSubmit = () =>
+  cards.addItem(createCard({ name: titleInput.value, link: placeInput.value }));
 
 const profileInfoUsers = new UserInfo({
   profileName: profileName,
   profileActivity: profileActivity,
-  inputsNames: infoUserProfile
+  inputsNames: infoUserProfile,
 });
-
 
 const handleFormProfileSubmit = (info) => {
   profileInfoUsers.setUserInfo(info);
 };
 
-const popupAddPlaceForm = new PopupWithForm(popupAddPlace, handleCardFormSubmit);
+const popupAddPlaceForm = new PopupWithForm(
+  popupAddPlace,
+  handleCardFormSubmit
+);
 popupAddPlaceForm.setEventListeners();
 
 const popupPicture = new PopupWithImage(popupImage);
 popupPicture.setEventListeners();
 
-
-const profileInfoForm = new PopupWithForm(profilePopup, handleFormProfileSubmit)
+const profileInfoForm = new PopupWithForm(
+  profilePopup,
+  handleFormProfileSubmit
+);
 profileInfoForm.setEventListeners();
 
 profilePopupOpenBtn.addEventListener("click", () => {
   profileInfoForm.open();
- profileValidator.clearErrors();
+  profileValidator.clearErrors();
   nameInput.value = profileName.textContent;
   activityInput.value = profileActivity.textContent;
   profileValidator.turnOffBtn();
-  
 });
-
-
 
 popupAddOpenBtn.addEventListener("click", () => {
   titleInput.value = "";
@@ -167,7 +168,3 @@ popupAddOpenBtn.addEventListener("click", () => {
   placeAddValidator.turnOffBtn();
   popupAddPlaceForm.open();
 });
-
-
-
-
