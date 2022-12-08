@@ -1,11 +1,5 @@
-/*import {
-  //openPopup,
- // popupImage,
-  imageOfPopup,
-  captionImageOfPopup,
-} from "../pages/index.js";*/
 class Card {
-  constructor( {data, handleCardClick} , templateSelector) {
+  constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
     this._handleCardClick = handleCardClick;
@@ -25,9 +19,12 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector(".elements__maskGroup").src = this._link;
-    this._element.querySelector(".elements__title").textContent = this._name;
-    this._element.querySelector(".elements__maskGroup").alt = this._name;
+    this._imageLink = this._element.querySelector(".elements__maskGroup");
+    this._imageName = this._element.querySelector(".elements__title");
+
+    this._imageLink.src = this._link;
+    this._imageName.textContent = this._name;
+    this._imageName.alt = this._name;
 
     return this._element;
   }
@@ -55,23 +52,13 @@ class Card {
   }
 
   _likeCard() {
-    this._element
-      .querySelector(".elements__button-like")
-      .classList.toggle("button-like_active");
+    this._buttonLike.classList.toggle("button-like_active");
   }
 
   _deleteCard() {
     this._element.remove();
     this._element = null;
   }
-
-  /*_handleCardClick() {
-    imageOfPopup.src = this._link;
-    imageOfPopup.alt = this._name;
-    captionImageOfPopup.textContent = this._name;
-  }*/
-
-  
 }
 
 export default Card;
