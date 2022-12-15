@@ -16,6 +16,10 @@ export default class PopupWithForm extends Popup {
     return this._inputListValues;
   }
 
+  changeSubmit(newHandleFormSubmit) {
+    this._handleFormSubmit = newHandleFormSubmit;
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._popup.addEventListener("submit", (evt) => {

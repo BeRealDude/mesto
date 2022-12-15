@@ -13,7 +13,10 @@
     </header>
     <main class="content">
         <div class="profile">
-            <div class="profile__avatar"></div>
+            <div class="profile__avatar">
+                <img class="profile__avatarImg" src="#" alt="">
+                <div class="profile__overlay"></div>
+            </div>
             <div class="profile-info">
                 <h1 class="profile-info__name"></h1>
                 <p class="profile-info__activity"></p>
@@ -33,10 +36,21 @@
             <button type="button" class="popup__close"></button>
             <h2 class="popup__heading">Редактировать профиль</h2>
             <form class="form" name="user" id="user" novalidate>
-                <input required minlength="2" maxlength="40" class="popup__text" type="text" name="user-name" id="user-name" placeholder="Имя">
+                <input required minlength="2" maxlength="40" class="popup__text" type="text" name="userName" id="user-name" placeholder="Имя">
                 <span class="form__error user-name-error" id="user-name-error"></span>
-                <input required minlength="2" maxlength="200" class="popup__text" type="text" name="user-activity" id="user-activity" placeholder="О себе">
+                <input required minlength="2" maxlength="200" class="popup__text" type="text" name="userActivity" id="user-activity" placeholder="О себе">
                 <span class="form__error user-activity-error" id="user-activity-error"></span>
+                <button type="submit" class="form__submit-btn form__profile-btn-save">Сохранить</button>
+            </form>
+        </div>
+    </section>
+    <section class="popup profile-popup-avatar">
+        <div class="popup__container">
+            <button type="button" class="popup__close"></button>
+            <h2 class="popup__heading popup__heading_avatar">Обновить аватар</h2>
+            <form class="form" name="formAvatar" id="formAvatar" novalidate>
+                <input required class="popup__text" type="url" name="userAvatar" id="userAvatar" placeholder="Ссылка на картинку">
+                <span class="form__error userAvatar-error" id="userAvatar-error"></span>
                 <button type="submit" class="form__submit-btn form__profile-btn-save">Сохранить</button>
             </form>
         </div>
@@ -54,6 +68,15 @@
             </form>
         </div>
     </section>
+    <section class="popup delete-popup">
+        <div class="popup__container popup__container_dltCont">
+            <button type="button" class="popup__close"></button>
+            <h2 class="popup__heading">Вы уверены?</h2>
+            <form class="form" novalidate>
+            <button type="submit" class="form__submit-btn">Да</button>
+        </form>
+            </div>
+    </section>
     <section class="popup popup_bg popup-img">
         <div class="popup__container popup__container_imgCont">
             <button type="button" class="popup__close"></button>
@@ -68,6 +91,7 @@
             <div class="elements__wrapper">
                 <h2 class="elements__title"></h2>
                 <button type="button" class="elements__button-like"></button>
+                <span class="elements__quantity-like"></span>
             </div>
         </li>
     </template>
