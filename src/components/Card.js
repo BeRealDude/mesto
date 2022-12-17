@@ -24,16 +24,7 @@ class Card {
 
   putLike(newLikes) {
     this._likes = newLikes;
-   // console.log("newLikes", newLikes)
-    const likeQuantityEl = this._element.querySelector(
-      ".elements__quantity-like"
-    );
-    try {
-      likeQuantityEl.textContent = this._likes.length;
-    } catch (e) {
-      console.log("ошибка");
-      console.log(e);
-    }
+    this._likeQuantityEl.textContent = this._likes.length;
   }
 
   isLiked() {
@@ -44,6 +35,8 @@ class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
+
+    this._likeQuantityEl = this._element.querySelector(".elements__quantity-like");
 
     this._imageLink = this._element.querySelector(".elements__maskGroup");
     this._imageName = this._element.querySelector(".elements__title");

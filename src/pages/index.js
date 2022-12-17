@@ -12,19 +12,17 @@ import { data, info } from "autoprefixer";
 
 let currentUserId
 
-api.getInfo().then((info) => {
-  console.log("info", info);
-  profileInfoUsers.setUserInfo(info);
-
-  currentUserId = info._id
-});
-
-api.getCards().then((items) => {
-  console.log("items", items);
-  items.forEach((data) => {
+Promise.all([api.getInfo(), api.getCards()])
+  .then(([info, data]) => {
+    currentUserId = info._id;
+    profileInfoUsers.setUserInfo(info);
+      data.forEach((data) => {
     cards.addItem(createCard(data));
   });
-});
+  })
+  .catch(err => {
+    console.log("Ошибка",err)
+  });
 
 const profilePopupOpenBtn = document.querySelector(".profile-info__open-popup");
 const profilePopup = document.querySelector(".profile-popup");
@@ -99,6 +97,9 @@ const handleLikeCard = (card) => {
     console.log("res", res);
     card.likeCard()
     card.putLike(res.likes)
+  })
+  .catch(err => {
+    console.log("Ошибка",err)
   });
 }else {
 
@@ -107,6 +108,9 @@ const handleLikeCard = (card) => {
     console.log("res", res);
     card.likeCard()
     card.putLike(res.likes)
+  })
+  .catch(err => {
+    console.log("Ошибка",err)
   });
 }
 }
@@ -115,9 +119,14 @@ const handleDeleteClick = (card) => {
   console.log("id", card.getId());
   popupDeleteCard.open();
   popupDeleteCard.changeSubmit(() => {
-    api.dltCard(card.getId()).then((res) => {
+    api.dltCard(card.getId())
+    .then((res) => {
       console.log("res", res);
       card.deleteCard()
+      popupDeleteCard.close();
+    })
+    .catch(err => {
+      console.log("Ошибка",err)
     });
   });
 };
@@ -131,23 +140,37 @@ const profileInfoUsers = new UserInfo({
 const btnProfile = profilePopup.querySelector(".form__submit-btn")
 
 const handleFormSubmit = (info) => {
-  btnProfile.textContent = "Сохранение..."
-  api.editInfo(info).then((info) => {
+  profileInfoForm.renderLoading(true, 'Сохранение...')
+  api.editInfo(info)
+  .then((info) => {
     profileInfoUsers.setUserInfo(info);
-    btnProfile.textContent = "Сохранить"
-  });
+    profileInfoForm.close();
+  })
+  .catch(err => {
+    console.log("Ошибка",err)
+  })
+  .finally(()=> {
+    profileInfoForm.renderLoading(false)
+})
 };
 
 
 const btnPopupAddPlace = popupAddPlace.querySelector(".form__submit-btn")
 
 const handleCardFormSubmit = (data) => {
-  btnPopupAddPlace.textContent = "Сохранение..."
-  api.addNewCard(data).then((data) => {
+  popupAddPlaceForm.renderLoading(true, "Сохранение...")
+  api.addNewCard(data)
+  .then((data) => {
     console.log("data", data);
     cards.addItem(createCard(data));
-    btnPopupAddPlace.textContent = "Создать"
-  });
+    popupAddPlaceForm.close();
+  })
+  .catch(err => {
+    console.log("Ошибка",err)
+  })
+  .finally(()=> {
+    popupAddPlaceForm.renderLoading(false)
+})
 };
 
 const popupAddPlaceForm = new PopupWithForm(
@@ -163,15 +186,7 @@ const profileInfoForm = new PopupWithForm(profilePopup, handleFormSubmit);
 profileInfoForm.setEventListeners();
 
 const popupDelete = document.querySelector(".delete-popup");
-const popupDeleteCard = new PopupWithForm(
-  popupDelete /*, () => {
-  console.log("удалить")
-  api.dltCard(id)
-  .then(res => {
-    console.log("res", res)
-  })
-}*/
-);
+const popupDeleteCard = new PopupWithForm(popupDelete);
 popupDeleteCard.setEventListeners();
 
 const popupAvatarOpenBtn = document.querySelector(".profile__avatar");
@@ -179,12 +194,18 @@ const profilePopupAvatar = document.querySelector(".profile-popup-avatar");
 const btnPopupAvatar = profilePopupAvatar.querySelector(".form__submit-btn")
 
 const handleFormSubmitAvatar = (info) => {
-  console.log("av")
-  btnPopupAvatar.textContent = "Сохранение..."
-  api.editAvatar(info).then((info) => {
+  popupAvatar.renderLoading(true, "Сохранение...")
+  api.editAvatar(info)
+  .then((info) => {
     profileInfoUsers.setUserInfo(info);
-    btnPopupAvatar.textContent = "Сохранить"
-  });
+    popupAvatar.close();
+  })
+  .catch(err => {
+    console.log("Ошибка",err)
+  })
+  .finally(()=> {
+    popupAvatar.renderLoading(false)
+})
 };
 
 
