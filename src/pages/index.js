@@ -16,7 +16,7 @@ Promise.all([api.getInfo(), api.getCards()])
   .then(([info, data]) => {
     currentUserId = info._id;
     profileInfoUsers.setUserInfo(info);
-      data.forEach((data) => {
+      data.reverse().forEach((data) => {
     cards.addItem(createCard(data));
   });
   })
